@@ -1,0 +1,21 @@
+
+  <div class="login-container">
+    <form class="login-form" (ngSubmit)="onSubmit()">
+      <h2>Login</h2>
+      <div class="input-container">
+        <label for="username">Username</label>
+        <input type="text" placeholder="username" [(ngModel)]="username" name="username" autocomplete="off" required>
+      </div>
+      <div class="input-container">
+        <label for="password">Password</label>
+        <input type="password" placeholder="password" [(ngModel)]="password" name="password" autocomplete="off"
+          required>
+      </div>
+      <button type="submit" *ngIf="!isLoading">
+        Login
+      </button>
+      <div style="display: flex;justify-content: center;" *ngIf="isLoading">
+      <app-loader [width]="'12px'" [height]="'12px'" [bordercolor]="'yellowgreen'"></app-loader>
+      </div>
+    </form>
+  </div>

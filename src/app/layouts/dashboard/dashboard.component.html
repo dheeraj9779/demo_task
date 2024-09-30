@@ -1,0 +1,33 @@
+<div style="background-color: #9acd3287;">
+  <div class="add-form">
+    <div>
+      <label>Title</label>
+      <input type="text" placholder="Title" [(ngModel)]="title" name="title">
+    </div>
+    <div>
+      <label>Description</label>
+    <input type="text" placholder="Description" [(ngModel)]="body" name="description">
+  </div>
+    <button (click)="addPost()" *ngIf="!addLoader">Add</button>
+    <button *ngIf="addLoader" style="display: flex;justify-content: center;"><app-loader [width]="'12px'" [height]="'12px'" [bordercolor]="'yellowgreen'"></app-loader></button>
+  </div>
+  <div class="card-container">
+    @for(post of posts; track post){
+      <div class="card">
+        <div class="content">
+          <h3>{{post.title}}</h3>
+          <p>{{post.body}}</p>
+        </div>
+        <div class="actions">
+          <button (click)="deletePost(post)" *ngIf="!post.flag">Delete</button>
+          <button *ngIf="post.flag"><app-loader [width]="'12px'" [height]="'12px'" [bordercolor]="'red'"></app-loader></button>
+        </div>
+      </div>
+    }
+    @empty{
+      <div style="position: absolute;bottom: 35%">
+      <app-loader [width]="'50px'" [height]="'50px'" [bordercolor]="'yellowgreen'"></app-loader>
+      </div>
+    }
+  </div>
+</div>
